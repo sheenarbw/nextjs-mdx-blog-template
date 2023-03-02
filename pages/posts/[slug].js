@@ -1,18 +1,23 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { allPosts } from "/.contentlayer/generated";
 import Page from "../../components/Page";
+import { Box, Paper, Text } from "@mantine/core";
+import FormattedDate from "../../components/Date";
 
 export default function Blog({ post }) {
   const Component = useMDXComponent(post.body.code);
   return (
-    <Page>
+    <Page title={post.title}>
+      {/* <Text c="dimmed">{post.blurb}</Text> */}
+      <Text c="dimmed">
+        <FormattedDate date={post.date} />
+      </Text>
       <Component />
     </Page>
   );
 }
 
 export async function getStaticPaths() {
-  console.log();
   return {
     paths: allPosts.map((post) => ({ params: { slug: post.slug } })),
     fallback: false,
