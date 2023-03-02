@@ -1,11 +1,14 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { allPosts } from "/.contentlayer/generated";
+import Page from "../../components/Page";
 
 export default function Blog({ post }) {
-  console.log(post);
   const Component = useMDXComponent(post.body.code);
-
-  return <Component />;
+  return (
+    <Page>
+      <Component />
+    </Page>
+  );
 }
 
 export async function getStaticPaths() {
