@@ -1,0 +1,3 @@
+- [ ] Install Mantine
+- [ ] Home page layout 
+- [ ] Blog page layout 
