@@ -1,0 +1,19 @@
+{
+  "title": "Blog One🚀",
+  "date": "2021-12-24T00:00:00.000Z",
+  "body": {
+    "raw": "\nHey There👋\n\nWelcome to Blog One✨ Let's learn together!\n\n<button>weee</button>\n",
+    "html": "<p>Hey There👋</p>\n<p>Welcome to Blog One✨ Let's learn together!</p>\n<p>weee</p>"
+  },
+  "_id": "text-post.mdx",
+  "_raw": {
+    "sourceFilePath": "text-post.mdx",
+    "sourceFileName": "text-post.mdx",
+    "sourceFileDir": ".",
+    "contentType": "mdx",
+    "flattenedPath": "text-post"
+  },
+  "type": "Post",
+  "url": "/posts/text-post",
+  "slug": "text-post"
+}
