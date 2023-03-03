@@ -1,0 +1,66 @@
+---
+title: "How I built this blog site"
+date: 2023-03-04
+blurb: "This post covers the tech stack used in this website. It covers how to configure mdx, the component library in use and even hosting. This is a technical article that will get you set up to do something similar"
+---
+
+In a [previous article](/posts/how-i-chose-next-as-a-blog-tool) I
+spoke about why I chose to use Next.js for this blog. If you are interested in how we got here then go read that first. It's not a prerequisite though.
+
+I'll talk through the current tech stack and suggest other tools you can consider for your use case.
+
+# The tech stack
+
+This site is built with:
+
+- NextJs: Dah
+- Mantine: The component library
+- Contentlayer: this handles rendering my mdx files
+
+This site is hosted at:
+
+TODO
+
+# A note on documentation
+
+Whenever you are getting to grips with a new tool or just want to check how something works then I always recommend reading the official docs.
+
+I have noticed a bit of a silly trend where people basically copy official tutorials onto their personal blogs and change a few words and pass it off as original work. This is annoying and so I wont be doing that.
+
+The official docs for any tool are generally written by people who have the most up to date knowledge of that tool, why it was built, it's shortcomings, it's idioms... Sometimes the official docs do fall short in different ways, maybe something is not explained as well as it could be or your particular use case isn't covered. But the strengths far outweigh the weaknesses.
+
+I'll keep tech documentation as DRY by referring you to the best resources I know of ;)
+
+# Ok, so Next...
+
+If you haven't used Next.js yet - it's a framework built on top of React. [Here is the official tutorial](https://nextjs.org/learn/foundations/about-nextjs?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website). It's really worthwhile.
+
+If you just follow along with the official tutorial you will build yourself a blog site that works super well if all you are after is perfectly normal markdown. This is probably enough for most people.
+
+# Getting MDX support
+
+We can do this the easy way or the hard way...
+
+## The easy way
+
+You can follow [this guide](https://nextjs.org/docs/advanced-features/using-mdx#helpful-links) to get set up. But this approach has some serious downsides.
+
+If you did the official Next tutorial then you would have written an app that allows you to:
+
+- keep all your markdown files in one directory
+- make use of perfectly normal YAML frontmatter
+- define how your blog post would be rendered and laid out just once instead of all over the place
+
+This is very tidy.
+
+If you follow the guide mentioned above then you will have some problems:
+
+- your MDX files will be nested inside your pages directory. That might not bother you but it irks me a little bit. I do like to have the content separate from the application that renders the content
+- you wont be able to use YAML frontmatter out of the box. Apparently you can use plugins to sort this out
+- the deal-breaker for me is the fact that the MDX files need boilerplate. If you want a consistent layout then every file will need to import your layout component and set up a default export
+
+It's all just a bit... meh
+
+I can see the benefit in using this approach if you want to have MDX support for your "About Me" page or something like that. But it isn't great for blogging.
+
+## The hard way

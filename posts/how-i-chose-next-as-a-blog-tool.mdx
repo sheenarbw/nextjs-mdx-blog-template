@@ -1,0 +1,94 @@
+---
+title: "Why I chose to write using NextJS"
+date: 2023-03-03
+blurb: "In order to start writing publicly, you need to figure out where you want to write. Here's how I made my decision and a few things you might want to consider"
+---
+
+I've been planning to get into writing for ages and ages. I'm not going to get into the why of it in this article. One necessary step is just choosing and/or setting up a platform where my writing can be hosted.
+
+## Option 1: Post articles to someone else's platform
+
+There are sites like Substack and Medium that aim to help writers build audiences and revenue with their writing. They handle all sorts of things for you, like hosting infrastructure, managing subscribers and a whole lot more.
+
+Many great creative folks that I follow preach the importance of keeping control of your audience. If you build an audience on platform X and then platform X changes the rules of the game, or their recommendation algorithm, or their pricing model or any number of things then you could get blindsided.
+
+I am assuming no ill intent on the part of the platforms I've mentioned here. I actually do intend to experiment with them later on. I'll have a primary home for my content that I control, but I'm all for spreading the love.
+
+## Option 2: No-code full-stack applications
+
+This would include things like Ghost and Wordpress.
+
+These are really high powered. You can do nice things like have multiple writers with user accounts, restricted access to different articles, plugins that handle comments and emails and all sorts of other bells and whistles.
+
+There are a lot of really good reasons to go with something like this:
+
+- you get to keep full control of your content
+- you get a nice user-friendly editing experience out of the box
+- there are visual themes that other people have made that you can just install and run with
+- the setup is handled for you, you can get on with your writing
+- there are loads of experts around who can help you get set up
+
+This option is best for you if you:
+
+- are super keen to monetize your content
+- want to have member's only content
+- are not interested in having full control over how the technology works
+- want a nice user interface for your writing
+- want to work with other authors or editors who would need a user interface
+
+This is for you if you are ... most people. I was personally very tempted by Ghost, it's legit.
+
+## Option 3: Static site renderer
+
+This option is only for you if you are a bit of a techie, or willing to learn a few new tricks :)
+
+A blog, in it's simplest form, is just a collection of dead simple web pages. If you want to just host a web page with some content on it then you really don't need a database, user management, a fancy web-based editing experience or any other bloat.
+
+You need some old school HTML pages, with some perfectly normal links between them. And you need somewhere to put those pages.
+
+But authoring HTML by hand is not a whole lot of fun. You still want to have a good experience when writing the content.
+
+This is where static site renderers come in. A static site renderer let's an author write content in a nice user-friendly format (eg markdown). It then takes that content and translates it into something more web-ready (like HTML).
+
+There are a lot of different static site renderers out there. You would need to weigh up a few different things when picking something:
+
+- how much control do you really want? Many staic site renderers make decisions for you about how the site should be structured and what functionality is available. This is good if you dont want to get your hands too dirty, but it can also be limiting if you want full control. The more control you have, the more technical you will need to be
+- Do you need something that let's you just grab a theme someone else made? Eg: If you wanted to build a Next.js based static site you would need to do basically everything from scratch. If you use Hugo you could just grab a theme. This again comes back to how technical you are, but also, how interested are you in defining the look and feel of your site yourself?
+- What features do you want? Eg, if you are keen on fancy shit like MDX then you'll need to get your hands dirty
+- Personal preference and curiosity :)
+
+I chose static site rendering for a lot of reasons:
+
+- it has no bloat, it's streamlined. To me this seems elegant
+- I can edit the content in my text editor of choice (VSCode)instead of having to use some online editing gui that makes me less efficient.
+- Editing markdown is dead easy. And many tools understand Markdown so it's easy to reuse content in different places
+- I heart Git. Keeping my content in Git makes all the sense to me for obvious reasons. It's also cool because you can do fun things like use feature-branching to work on different posts and then publish your posts my merging them. So tasty!
+- I like having control over how the system works. If I want a feature I want to be able to add it and tweak it however I want
+
+## Why Next.Js
+
+There are a lot of different static site generators. Next.js is one of the more technical options. It's hard to set up because it doesn't even support markdown out of the box, and it doesn't have pretty themes you can just use, or anything.
+
+Next makes no assumptions about what you want. It's a pretty serious React Based framework that you can se to build pretty serious full-stack applications. It's just also good at blogging because it's hella extendable and handles static site rendering out of the box. (Static site rendering isn't only for blogs)
+
+Another thing I really like is that Next can be set up to support MDX. MDX is what you get if Markdown and an actual legit wizard have a super-baby. It lets you add React components (think widgets) right into the middle of your markdown files.
+
+This is interesting to me because I spend a lot of time making educational content for work. I want to explore new ways to make the content engaging and interactive. MDX gives me a lot of creative freedom.
+
+I also like working in React based things. It fits in my head and it's fun.
+
+There are still a few options on the table for React-based static site generators that give me full flexibility and can handle MDX. The shortlist became:
+
+- Gatsby
+- Remix
+- Next
+
+All of these have pros and cons. I'm sure that they would all be able to do the job just fine. So then I was faced with a choice between technologies that were all "good enough".
+
+It's easy to get into analysis paralysis with these kinds of decisions. Sometimes the optimal decision doesn't matter.
+
+In the end I chose Next because:
+
+- I need to use it at work anyway (transferrable skills for the win)
+- It wont lock me in, I can take my mdx files and port them somewhere else if I want to
+- It's fun

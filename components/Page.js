@@ -13,9 +13,7 @@ export default function Page({ children, title }) {
     >
       <Container>
         <Title pb="lg">{title}</Title>
-        {/* <Paper shadow="xs" p="md"> */}
         {children}
-        {/* </Paper> */}
       </Container>
     </AppShell>
   );
