@@ -14,8 +14,8 @@ I'll talk through the current tech stack and suggest other tools you can conside
 This site is built with:
 
 - NextJs: Dah
-- Mantine: The component library
 - Contentlayer: this handles rendering my mdx files
+- Mantine: The component library
 
 This site is hosted at:
 
@@ -64,3 +64,101 @@ It's all just a bit... meh
 I can see the benefit in using this approach if you want to have MDX support for your "About Me" page or something like that. But it isn't great for blogging.
 
 ## The hard way
+
+Ok, it's not that hard. It's just a bit involved...
+
+You can set things up so that all your MDX files are centrally located outside of your pages directory, and you don't need to write boilerplate code to get everything laid out in the same way.
+
+To do this, we use a tool called Contentlayer.
+
+The [official tutorial](https://www.contentlayer.dev/docs/getting-started) is pretty good over all.
+
+The first thing to know is that, at time of writing, the latest version of contentlayer is not compatible with the latest version of Next.
+
+https://github.com/contentlayerdev/contentlayer/issues/386
+
+I got it to work by downgrading my next
+
+npm i next@13.0.7
+
+The tutorial also says you should add some lines to tsconfig.json or jsconfig.json. If you don't have that file then just create it.
+
+(TODO: check)
+
+The tutorial says to create a file called. next.config.mjs. You shouldn't need to create it. Rather just edit the file in place. My next implementation started off with a next.config.js file already so I just incorperated the suggested changes. I ended up with
+
+```javascript
+const { withContentlayer } = require("next-contentlayer");
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+};
+
+module.exports = withContentlayer(nextConfig);
+```
+
+Last up, you need to change things up so you can handle mdx files, not just md files.
+
+Update your contentlayer.config.ts like so:
+
+```javascript
+import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+
+export const Post = defineDocumentType(() => ({
+  name: 'Post',
+  filePathPattern: `**/*.mdx`,   // change this
+  contentType: 'mdx',            // and this
+
+  fields: {
+    // ... the rest of the file is unchanged
+```
+
+Now you'll need to update your post layout. You defined it in `pages/posts/[slug].js`
+
+```javascript
+import { useMDXComponent } from "next-contentlayer/hooks";
+
+// a bunch of things stay the same ...
+
+const PostLayout = ({ post }) => {
+  const Component = useMDXComponent(post.body.code); // get your mdx component
+  return (
+    <>
+      <Head>
+        <title>{post.title}</title>
+      </Head>
+      <article className="mx-auto max-w-2xl py-16">
+        <div className="mb-6 text-center">
+          <Link href="/">
+            <a className="text-center text-sm font-bold uppercase text-blue-700">
+              Home
+            </a>
+          </Link>
+        </div>
+        <div className="mb-6 text-center">
+          <h1 className="mb-1 text-3xl font-bold">{post.title}</h1>
+          <time dateTime={post.date} className="text-sm text-slate-600">
+            {format(parseISO(post.date), "LLLL d, yyyy")}
+          </time>
+        </div>
+        <Component /> {/* and then use the mdx component */}
+      </article>
+    </>
+  );
+};
+
+export default PostLayout;
+```
+
+# Mantine
+
+You know how programming languages have different levels of abstractions? Like C is close to the machine, C# is more abstract, and Python even more so? Well, the same thing applies to frontend prettiness.
+
+If you want to style your gui and add some nice widgets and interactions you can either go with pure css (with a sprinkling of js most likely) or you can make use of different tools that abstract away the details. A lot of people like tailwind. Honestly tailwind seems like a wonderful thing. That said, tailwind gives me more control than I want.
+
+So my standard is to reach for a fully fledged component library. There are loads to choose from.
+
+I came across Mantine fairly recently and I've been digging it. So sticking with it :)
+
+The official [getting started guide](https://mantine.dev/pages/getting-started/) is solid.

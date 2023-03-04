@@ -1,5 +1,7 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 
+import { headingIncrement } from './rehype-plugins'
+
 export const Post = defineDocumentType(() => ({
   name: 'Post',
   filePathPattern: `**/*.mdx`,
@@ -38,6 +40,6 @@ export default makeSource({
   documentTypes: [Post],
   mdx: {
     remarkPlugins: [],
-    rehypePlugins: [],
+    rehypePlugins: [headingIncrement],
   },
 })
